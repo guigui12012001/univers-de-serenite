@@ -1,0 +1,482 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Univers de Sérénité - Musique & Relaxation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+
+/* BASE DU SITE */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b171d;
+  color: white;
+}
+
+/* GRANDE BANNIÈRE */
+
+header {
+  min-height: 560px;
+  padding: 70px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(rgba(4, 18, 22, 0.35), rgba(4, 18, 22, 0.75)),
+    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1800")
+    center / cover no-repeat;
+}
+
+.surtitre {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  color: white;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+h1 {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 100px;
+    font-weight: 400;
+    color: #b8ffe8;
+    text-shadow:
+        0 0 8px #5fffd2,
+        0 0 20px #42eec5,
+        0 0 35px #42eec5;
+    animation: none;
+}
+.phrase-accroche {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 34px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.6;
+  color: white;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.bouton {
+  display: inline-block;
+  background: #b8ead8;
+  color: #102129;
+  padding: 14px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-top: 25px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.bouton:hover {
+  background: #d5f4e7;
+  transform: translateY(-3px);
+}
+
+/* CONTENU PRINCIPAL */
+
+main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 45px 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #b8ead8;
+  font-family: Georgia, serif;
+  font-size: 34px;
+}
+
+.intro {
+  text-align: center;
+  color: #c2d2cf;
+  line-height: 1.7;
+}
+
+/* CATÉGORIES */
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 35px;
+}
+
+.carte {
+  background: #14262d;
+  padding: 25px;
+  border-radius: 18px;
+  border: 1px solid #29434b;
+}
+
+.carte .emoji {
+  font-size: 35px;
+}
+
+.carte h3 {
+  color: #d5f4e7;
+}
+
+.carte p {
+  color: #bdcfcc;
+  line-height: 1.6;
+}
+
+/* ALBUMS */
+
+.albums {
+  margin-top: 55px;
+  padding: 20px 0;
+}
+
+.albums-grille {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 35px;
+  align-items: start;
+}
+
+.album {
+  background: #14262d;
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid #29434b;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.album:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px #4bd9b544;
+}
+
+/* POCHETTES CLIQUABLES */
+
+.album summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.album summary::-webkit-details-marker {
+  display: none;
+}
+
+.album summary img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.album h3 {
+  color: #b8ead8;
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+.album p {
+  color: #bdcfcc;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.voir-chansons {
+  display: block;
+  color: #b8ead8;
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+.album[open] .voir-chansons {
+  color: white;
+}
+
+.album[open] .voir-chansons::after {
+  content: " — Fermer les chansons";
+}
+
+.album:not([open]) .voir-chansons::after {
+  content: " + Voir les chansons";
+}
+
+/* LISTE DES CHANSONS */
+
+.chansons {
+  border-top: 1px solid #29434b;
+  margin-top: 15px;
+  padding-top: 12px;
+}
+
+.titre-chanson {
+  color: white !important;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px !important;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.album audio {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.telechargement {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.telechargement:hover {
+  color: #b8ead8;
+}
+
+.bientot {
+  color: #b8ead8 !important;
+  font-style: italic;
+}
+
+/* PIED DE PAGE */
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #9bb1ae;
+  border-top: 1px solid #29434b;
+}
+
+/* ADAPTATION AUX ÉCRANS */
+
+@media (max-width: 850px) {
+  .categories,
+  .albums-grille {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .categories,
+  .albums-grille {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    min-height: 480px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BANNIÈRE -->
+
+<header>
+
+  <p class="surtitre">UNE PARENTHÈSE DE DOUCEUR</p>
+
+  <h1>Univers de Sérénité</h1>
+
+  <p class="phrase-accroche">
+    Des paysages sonores pour ralentir, respirer et voyager.<br>
+    Musique douce, nature et relaxation.
+  </p>
+
+  <a href="#musiques" class="bouton">
+    Découvrir les musiques
+  </a>
+
+</header>
+
+<main>
+
+<!-- CATÉGORIES -->
+
+<section>
+
+  <h2>Choisis ton évasion</h2>
+
+  <p class="intro">
+    Installe-toi confortablement et laisse-toi porter.
+  </p>
+
+  <div class="categories">
+
+    <article class="carte">
+      <div class="emoji">🌙</div>
+      <h3>Sommeil & détente</h3>
+      <p>Des mélodies douces pour se relaxer et dormir.</p>
+    </article>
+
+    <article class="carte">
+      <div class="emoji">🌲</div>
+      <h3>Forêt & nature</h3>
+      <p>Une promenade sonore au milieu des arbres.</p>
+    </article>
+
+    <article class="carte">
+      <div class="emoji">💧</div>
+      <h3>Eau & cascades</h3>
+      <p>Le murmure de l'eau, la pluie et les ruisseaux.</p>
+    </article>
+
+    <article class="carte">
+      <div class="emoji">✨</div>
+      <h3>Mondes féeriques</h3>
+      <p>Des atmosphères magiques pour s'évader.</p>
+    </article>
+
+  </div>
+
+</section>
+
+<!-- ALBUMS MUSICAUX -->
+
+<section id="musiques" class="albums">
+
+  <h2>🎵 Nos albums musicaux</h2>
+
+  <p class="intro">
+    Choisis ton univers et laisse-toi transporter.
+  </p>
+
+  <div class="albums-grille">
+
+    <!-- ALBUM 1 -->
+
+    <details class="album">
+
+      <summary>
+        <img
+          src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600"
+          alt="Le Lac des Rêves">
+
+        <h3>Le Lac des Rêves</h3>
+
+        <p>Musique douce et relaxation</p>
+
+        <span class="voir-chansons"></span>
+      </summary>
+
+      <div class="chansons">
+
+        <p class="titre-chanson">🎵 Le Lac des Rêves</p>
+
+        <audio controls preload="metadata">
+          <source src="musiques/le-lac-des-reves.mp3" type="audio/mpeg">
+          Ton navigateur ne peut pas lire ce fichier audio.
+        </audio>
+
+        <a
+          class="telechargement"
+          href="musiques/le-lac-des-reves.mp3"
+          download="Le-Lac-des-Reves.mp3">
+          ⬇ Télécharger gratuitement
+        </a>
+
+      </div>
+
+    </details>
+
+    <!-- ALBUM 2 -->
+
+    <details class="album">
+
+      <summary>
+        <img
+          src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600"
+          alt="Au Cœur d'un Monde Féerique">
+
+        <h3>Au Cœur d'un Monde Féerique</h3>
+
+        <p>Voyage musical magique</p>
+
+        <span class="voir-chansons"></span>
+      </summary>
+
+      <div class="chansons">
+        <p class="bientot">Les chansons seront bientôt disponibles.</p>
+      </div>
+
+    </details>
+
+    <!-- ALBUM 3 -->
+
+    <details class="album">
+
+      <summary>
+        <img
+          src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=600"
+          alt="Les Murmures de la Nature">
+
+        <h3>Les Murmures de la Nature</h3>
+
+        <p>Eau et forêt</p>
+
+        <span class="voir-chansons"></span>
+      </summary>
+
+      <div class="chansons">
+        <p class="bientot">Les chansons seront bientôt disponibles.</p>
+      </div>
+
+    </details>
+
+    <!-- ALBUM 4 -->
+
+    
+<details class="album">
+  <summary>
+    <img src="https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?w=600" alt="Nuit Étoilée">
+    <h3>Nuit Étoilée</h3>
+    <p>Sommeil et méditation</p>
+    <span class="voir-chansons"></span>
+  </summary>
+
+  <div class="chansons">
+    <p class="titre-chanson">🌙 Clair de Lune sur le Lac</p>
+
+    <audio controls preload="metadata">
+      <source src="musiques/clair-de-lune-sur-le-lac.mp3" type="audio/mpeg">
+    </audio>
+
+    <a class="telechargement"
+       href="musiques/clair-de-lune-sur-le-lac.mp3"
+       download="Clair-de-Lune-sur-le-Lac.mp3">
+      ⬇ Télécharger gratuitement
+    </a>
+  </div>
+</details>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  © 2026 Univers de Sérénité - Musique & Relaxation
+</footer>
+
+</body>
+</html>
