@@ -1,13 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b171d">
 
 <title>Univers de Sérénité - Musique & Relaxation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<!-- Polices : toutes chargées ici (l'ancien @import dans le CSS était ignoré) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 
 /* BASE DU SITE */
@@ -36,7 +41,7 @@ header {
 
   background:
     linear-gradient(rgba(4, 18, 22, 0.35), rgba(4, 18, 22, 0.75)),
-    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1800")
+    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1600&q=70&auto=format&fit=crop")
     center / cover no-repeat;
 }
 
@@ -48,10 +53,12 @@ header {
   margin: 0;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 h1 {
     font-family: 'Pinyon Script', cursive;
-    font-size: 100px;
+    font-size: clamp(52px, 13vw, 100px);
+    line-height: 1.15;
+    overflow-wrap: break-word;
+    max-width: 100%;
     font-weight: 400;
     color: #b8ffe8;
     text-shadow:
@@ -72,14 +79,18 @@ h1 {
 }
 
 .bouton {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
   background: #b8ead8;
   color: #102129;
-  padding: 14px 25px;
+  padding: 14px 28px;
   border-radius: 30px;
   text-decoration: none;
   margin-top: 25px;
   font-weight: bold;
+  font-size: 17px;
   transition: 0.3s;
 }
 
@@ -100,7 +111,7 @@ h2 {
   text-align: center;
   color: #b8ead8;
   font-family: Georgia, serif;
-  font-size: 34px;
+  font-size: clamp(26px, 5vw, 34px);
 }
 
 .intro {
@@ -179,10 +190,13 @@ h2 {
 }
 
 .album summary img {
+  display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 12px;
+  background: #1c343c;
 }
 
 .album h3 {
@@ -200,8 +214,9 @@ h2 {
 .voir-chansons {
   display: block;
   color: #b8ead8;
-  font-size: 13px;
+  font-size: 15px;
   margin-top: 15px;
+  padding: 10px 0;
 }
 
 .album[open] .voir-chansons {
@@ -238,16 +253,23 @@ h2 {
 }
 
 .telechargement {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 18px;
   color: white;
   text-decoration: none;
   margin-top: 12px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
+  border: 1px solid #29434b;
+  border-radius: 24px;
 }
 
 .telechargement:hover {
   color: #b8ead8;
+  border-color: #b8ead8;
 }
 
 .bientot {
@@ -281,6 +303,32 @@ footer {
 
   header {
     min-height: 480px;
+    padding: 50px 16px;
+  }
+
+  .surtitre {
+    font-size: 20px;
+  }
+
+  .bouton {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .telechargement {
+    width: 100%;
+  }
+}
+
+/* Respect des préférences de mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+
+  .bouton:hover,
+  .album:hover {
+    transform: none;
   }
 }
 
@@ -368,8 +416,10 @@ footer {
 
       <summary>
         <img
-          src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600"
-          alt="Le Lac des Rêves">
+          src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&q=70&auto=format&fit=crop"
+          alt="Le Lac des Rêves"
+          width="600" height="600"
+          loading="lazy" decoding="async">
 
         <h3>Le Lac des Rêves</h3>
 
@@ -382,7 +432,7 @@ footer {
 
         <p class="titre-chanson">🎵 Le Lac des Rêves</p>
 
-        <audio controls preload="metadata">
+        <audio controls preload="none">
           <source src="musiques/le-lac-des-reves.mp3" type="audio/mpeg">
           Ton navigateur ne peut pas lire ce fichier audio.
         </audio>
@@ -404,8 +454,10 @@ footer {
 
       <summary>
         <img
-          src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600"
-          alt="Au Cœur d'un Monde Féerique">
+          src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=70&auto=format&fit=crop"
+          alt="Au Cœur d'un Monde Féerique"
+          width="600" height="600"
+          loading="lazy" decoding="async">
 
         <h3>Au Cœur d'un Monde Féerique</h3>
 
@@ -426,8 +478,10 @@ footer {
 
       <summary>
         <img
-          src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=600"
-          alt="Les Murmures de la Nature">
+          src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=600&q=70&auto=format&fit=crop"
+          alt="Les Murmures de la Nature"
+          width="600" height="600"
+          loading="lazy" decoding="async">
 
         <h3>Les Murmures de la Nature</h3>
 
@@ -444,29 +498,28 @@ footer {
 
     <!-- ALBUM 4 -->
 
-    
-<details class="album">
-  <summary>
-    <img src="https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?w=600" alt="Nuit Étoilée">
-    <h3>Nuit Étoilée</h3>
-    <p>Sommeil et méditation</p>
-    <span class="voir-chansons"></span>
-  </summary>
+    <details class="album">
+      <summary>
+        <img src="https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?w=600&q=70&auto=format&fit=crop" alt="Nuit Étoilée" width="600" height="600" loading="lazy" decoding="async">
+        <h3>Nuit Étoilée</h3>
+        <p>Sommeil et méditation</p>
+        <span class="voir-chansons"></span>
+      </summary>
 
-  <div class="chansons">
-    <p class="titre-chanson">🌙 Clair de Lune sur le Lac</p>
+      <div class="chansons">
+        <p class="titre-chanson">🌙 Clair de Lune sur le Lac</p>
 
-    <audio controls preload="metadata">
-      <source src="musiques/clair-de-lune-sur-le-lac.mp3" type="audio/mpeg">
-    </audio>
+        <audio controls preload="none">
+          <source src="musiques/clair-de-lune-sur-le-lac.mp3" type="audio/mpeg">
+        </audio>
 
-    <a class="telechargement"
-       href="musiques/clair-de-lune-sur-le-lac.mp3"
-       download="Clair-de-Lune-sur-le-Lac.mp3">
-      ⬇ Télécharger gratuitement
-    </a>
-  </div>
-</details>
+        <a class="telechargement"
+           href="musiques/clair-de-lune-sur-le-lac.mp3"
+           download="Clair-de-Lune-sur-le-Lac.mp3">
+          ⬇ Télécharger gratuitement
+        </a>
+      </div>
+    </details>
 
   </div>
 
