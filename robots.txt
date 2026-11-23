@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guigui12012001.github.io/univers-de-serenite/sitemap.xml
